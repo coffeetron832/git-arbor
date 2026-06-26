@@ -22,11 +22,11 @@ async function init() {
     }));
 
     // Cambiamos el nombre de la variable y del archivo de salida
-    const mapaAscii = generateAsciiMap(processed);
+    const mapaSvg = generateAsciiMap(processed);
     
-    fs.writeFileSync('bosque_profile.txt', mapaAscii);
+    fs.writeFileSync('bosque.svg', mapaSvg);
     
-    console.log("\n\x1b[34m💾 ¡Mapa generado con éxito en 'bosque_profile.html'!\x1b[0m");
+    console.log("\n\x1b[34m💾 ¡Mapa SVG generado con éxito en 'bosque.svg'!\x1b[0m");
     console.log("Copia su contenido y colócalo en tu Profile README.");
   } catch (error) {
     console.error("\x1b[31m❌ Error en la ejecución del core:\x1b[0m", error.message);
