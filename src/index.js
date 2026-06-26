@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const GITHUB_USER = "juan"; // Reemplaza por tu usuario de GitHub en producción
+const GITHUB_USER = "coffeetron832"; // Reemplaza por tu usuario de GitHub en producción
 
 async function init() {
   console.log(`\x1b[32m🌲 Inicializando git-arbor para: ${GITHUB_USER}...\x1b[0m`);
@@ -22,9 +22,9 @@ async function init() {
     }));
 
     // Cambiamos el nombre de la variable y del archivo de salida
-    const mapaHtml = generateAsciiMap(processed);
+    const mapaAscii = generateAsciiMap(processed);
     
-    fs.writeFileSync('bosque_profile.html', mapaHtml);
+    fs.writeFileSync('bosque_profile.txt', mapaAscii);
     
     console.log("\n\x1b[34m💾 ¡Mapa generado con éxito en 'bosque_profile.html'!\x1b[0m");
     console.log("Copia su contenido y colócalo en tu Profile README.");
