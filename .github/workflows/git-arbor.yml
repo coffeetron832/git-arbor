@@ -1,0 +1,43 @@
+name: Generar Bosque Git-Arbor Dinámico
+
+on:
+  # Se ejecuta automáticamente cada 12 horas
+  schedule:
+    - cron: '0 */12 * * *'
+  # Te permite activar la generación manualmente desde la pestaña "Actions" de GitHub
+  workflow_dispatch:
+  # Se ejecuta cada vez que subes cambios a la rama principal
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descarga el código del repositorio en el servidor virtual
+    - name: Checkout del repositorio
+      uses: actions/checkout@v4
+
+    # 2. Configura el entorno de Node.js
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    # 3. Instala las dependencias necesarias
+    - name: Instalar dependencias
+      run: npm install
+
+    # 4. Ejecuta tu script para generar el nuevo bosque.svg actualizado
+    - name: Generar mapa SVG
+      run: node src/index.js
+
+    # 5. Guarda el nuevo SVG generado y hace commit automático en tu repo
+    - name: Actualizar SVG en el repositorio
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add bosque.svg
+        git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Bosque actualizado dinámicamente [skip ci]" && git push)
