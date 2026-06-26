@@ -4,7 +4,7 @@ on:
   # Se ejecuta automáticamente cada 12 horas
   schedule:
     - cron: '0 */12 * * *'
-  # Te permite activar la generación manualmente desde la pestaña "Actions" de GitHub
+  # Te permite activar la generación manualmente desde la pestaña "Actions" de Github
   workflow_dispatch:
   # Se ejecuta cada vez que subes cambios a la rama principal
   push:
