@@ -21,14 +21,13 @@ async function init() {
       stage: calculateTreeStage(repo)
     }));
 
-    const mapaAscii = generateAsciiMap(processed);
+    // Cambiamos el nombre de la variable y del archivo de salida
+    const mapaHtml = generateAsciiMap(processed);
     
-    // Guardar el mapa crudo en la raíz del proyecto
-    fs.writeFileSync('bosque_profile.txt', mapaAscii);
+    fs.writeFileSync('bosque_profile.html', mapaHtml);
     
-    console.log("\n\x1b[34m💾 ¡Mapa generado con éxito en 'bosque_profile.txt'!\x1b[0m");
-    console.log("Copia su contenido y colócalo en tu Profile README rodeado por las etiquetas de scroll.");
-
+    console.log("\n\x1b[34m💾 ¡Mapa generado con éxito en 'bosque_profile.html'!\x1b[0m");
+    console.log("Copia su contenido y colócalo en tu Profile README.");
   } catch (error) {
     console.error("\x1b[31m❌ Error en la ejecución del core:\x1b[0m", error.message);
   }
